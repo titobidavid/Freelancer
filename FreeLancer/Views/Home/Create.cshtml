@@ -1,0 +1,69 @@
+﻿@using FreeLancer.Models.Models.Enums
+@model JobDTO
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Job</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SkillLevel" class="control-label"></label>
+                <select asp-for="SkillLevel" asp-items="@ViewBag.Experience" class="form-control"></select>
+                <span asp-validation-for="SkillLevel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SkillName" class="control-label"></label>
+                <select asp-for="SkillName" asp-items="Html.GetEnumSelectList<Experience>()" class="form-control"></select>
+                <span asp-validation-for="SkillName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaymentAmount" class="control-label"></label>
+                <input asp-for="PaymentAmount" class="form-control" />
+                <span asp-validation-for="PaymentAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Duration" class="control-label"></label>
+                <input asp-for="Duration" class="form-control" />
+                <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+                <label asp-for="Job_Hirer_Id" class="control-label"></label>
+                <input asp-for="Job_Hirer_Id" class="form-control" />
+                <span asp-validation-for="Job_Hirer_Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FreeLancer_Id" class="control-label"></label>
+                <input asp-for="FreeLancer_Id" class="form-control" />
+                <span asp-validation-for="FreeLancer_Id" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
